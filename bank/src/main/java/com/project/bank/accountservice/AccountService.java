@@ -1,5 +1,6 @@
 package com.project.bank.accountservice;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,6 @@ public class AccountService {
 		return repo.save(a);
 	}
 	
-	
-//	public List<Account> getData(){
-//		return repo.getAll();
-//	}
-//	
 
 	public Optional<Account> fetchById(long id) {
 		return repo.findById(id);
@@ -43,4 +39,14 @@ public class AccountService {
         account.setBalance(account.getbalance() - amount);
         return repo.save(account);
     }
+
+
+	public List<Account> getData() {
+		return repo.findAll();
+	}
+	
+	public void delete(Account account) {
+		repo.delete(account);
+	}
+	
 }
